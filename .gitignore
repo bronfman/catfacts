@@ -1,0 +1,9 @@
+*.pyc
+*.db
+*.rdb
+fixtures/
+celerybeat-schedule
+fabfile.py
+local_settings.py
+site_media/
+

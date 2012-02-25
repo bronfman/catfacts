@@ -1,0 +1,133 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block head_title_base %}{% if SITE_NAME %}{{ SITE_NAME }} : {% endif %}{% block head_title %}{% endblock %}{% endblock %}</title>
+        {% block viewport %}
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% endblock %}
+        
+        <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        {% block style_base %}
+            <link href="{% static "pinax/css/theme.css" %}" rel="stylesheet">
+            <link href="{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet">
+            <link href="{% static "bootstrap/css/bootstrap-responsive.css" %}" rel="stylesheet">
+            {% block extra_style %}{% endblock %}
+        {% endblock %}
+        {% block script_base %}
+            <script src="{% static "pinax/js/jquery-1.7.1.min.js" %}"></script>
+            <script src="{% static "pinax/js/jquery.form.js" %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap-alert.js" %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap-button.js" %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap-carousel.js" %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap-collapse.js" %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap-dropdown.js" %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap-scrollspy.js" %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap-tab.js" %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap-tooltip.js" %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap-popover.js" %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap-transition.js" %}"></script>
+            <script src="{% static "bootstrap/js/bootstrap-typeahead.js" %}"></script>
+            <script src="{% static "pinax/js/theme.js" %}"></script>
+            <script src="{% static "pinax/js/pinax.modal.js" %}"></script>
+            {% block extra_script %}{% endblock %}
+        {% endblock %}
+        {% block extra_head_base %}
+            {% block extra_head %}{% endblock %}
+        {% endblock %}
+
+        <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-28749545-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+
+</script> 
+
+<!-- Place this render call where appropriate -->
+<script type="text/javascript">
+      (function() {
+              var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                  po.src = 'https://apis.google.com/js/plusone.js';
+                      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                        })();
+                    </script>
+
+    <meta itemprop="name" content="CATFACTS">
+    <meta itemprop="description" content="SHOW ME THE CATFACTS">
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                  fjs.parentNode.insertBefore(js, fjs);
+                  }(document, 'script', 'facebook-jssdk'));</script>
+
+    </head>
+    <body class="{% block body_class %}{% endblock %}" id="{% block body_id %}{% endblock %}">
+        
+        {% block topbar_base %}
+            <div class="navbar navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        {% block topbar %}
+                            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                                <span class="i-bar"></span>
+                                <span class="i-bar"></span>
+                                <span class="i-bar"></span>
+                            </a>
+                            <a class="brand" href="{% url home %}">{{ SITE_NAME }}</a>
+                            <div class="nav-collapse">
+                                {% block nav %}
+                                    {% comment %}
+                                        <ul class="nav">
+                                            <li><a href="#tab_one">One</a></li>
+                                            <li><a href="#tab_two">Two</a></li>
+                                        </ul>
+                                    {% endcomment %}
+                                {% endblock %}
+                                {% block account_bar %}{% include "_account_bar.html" %}{% endblock %}
+                            </div>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+        
+        {% block body_base %}
+            <div class="container">
+                {% include "_messages.html" %}
+                {% block body %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+        
+        {% block footer_base %}
+            <div id="footer">
+                <div class="inner">
+                    <div class="container">
+                        {% block footer %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+        
+        {% block extra_body_base %}
+            {% block extra_body %}{% endblock %}
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Response>
+<Say voice="woman" language="en-gb">Welcome to cat facts. Here is cat fact number {{ fact.id }}</Say> 
+<Pause></Pause>
+<Say voice="woman" language="en-gb">{{ fact.fact }}</Say>
+<Pause></Pause>
+<Say voice="woman" language="en-gb">Thank you for calling cat facts, Good Bye!</Say>
+
+<Sms>Cat fact #{{ fact.id }}: {{ fact.fact }}</Sms>
+</Response>

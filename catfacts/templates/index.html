@@ -1,0 +1,36 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load bootstrap_tags %}
+
+{% block head_title %}{% trans "Welcome to CATFACTS" %}{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block body %}
+<div class="header">
+    <h2>Text the word <b>"catfact"</b> (no quotes!) to <b>+1 805-322-8837</b> (+1 805 3-CATTE-7) to start receiving daily user submitted CATFACTS on your phone!</h2>
+    <h3>(To unsubscribe just message the word <b>"nocats"</b>)</h3>
+    <h5>(You can also call the number to get a cat fact in voice form !)</h5>
+    <br />
+    <g:plusone size="tall" annotation="inline" href="http://facts.cattes.us/"></g:plusone>
+    <br />
+    <div class="fb-like" data-href="http://facts.cattes.us/" data-send="true" data-width="450" data-show-faces="true" data-font="arial"></div>
+</div>
+<hr />
+<br />
+
+<h3>Submit a Fact!</h3>
+<p>Submit a fact here and it might get added! (120 characters or less please)</p>
+
+<div id="factsubmit">
+<form action="/" method="post">{% csrf_token %}
+    <fieldset class="form-controls">
+        {{ form|as_bootstrap }}
+        <button type="submit" class="btn primary">Submit</button>
+    </fieldset>
+</form>
+</div>
+
+{% endblock %}
+
